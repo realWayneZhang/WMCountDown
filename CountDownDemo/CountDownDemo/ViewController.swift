@@ -46,7 +46,9 @@ class ViewController: UIViewController {
         countdownTimer.start(with: nil, end: "2019-12-19 22:49:00")
     }
     
+    
     deinit {
+        /// 可写可不写
         countdownTimer.stop()
     }
 
