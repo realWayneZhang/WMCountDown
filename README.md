@@ -7,7 +7,7 @@
 ## 用法：
 将WMCountDown.swift文件拖拽到项目中。
 代码如下：
-```
+```Swift
   /// 懒加载 倒计时
     lazy var countdownTimer: WMCountDown = {
         let timer = WMCountDown()
@@ -45,3 +45,4 @@
         countdownTimer.stop()
     }
 ```
+### 如果对您有帮助，请给个Star！😄，Thank you for look！
