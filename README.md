@@ -1,6 +1,8 @@
 # WMCountDown
 一百行代码搞定商城活动倒计时，采用Swift4.2语法，倒计时格式为天，时，分，秒。
 
+![展示](https://github.com/WinsonCheung/WMCountDown/blob/master/WMCounDown.gif)
+
 ## 优点：
 采用DispatchTimer定时器，在globalQueue中执行定时器，只在当前控制器开始倒计时，离开立即停止。
 
