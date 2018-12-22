@@ -10,22 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var hourLabel: UILabel!
-    @IBOutlet weak var minuteLabel: UILabel!
-    @IBOutlet weak var secondLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     /// 懒加载 倒计时
     lazy var countdownTimer: WMCountDown = {
-        let timer = WMCountDown()
-        // 此闭包可以在本类任意方法中写
-        timer.countDown = { [weak self] (d, h, m, s) in
-            self?.dayLabel.text = "\(d)天:"
-            self?.hourLabel.text = "\(h)时:"
-            self?.minuteLabel.text = "\(m)分:"
-            self?.secondLabel.text = "\(s)秒"
-        }
-        return timer
+        return WMCountDown()
     }()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,18 +29,24 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 防止 Cell 重用时 仍在倒计时
+        countdownTimer.stop()
+        
+        // 此闭包可以在本类任意方法中写
+        countdownTimer.countDown = { [weak self] (d, h, m, s) in
+            let time = d + ":" + h + ":" + m + ":" + s
+            self?.timeLabel.text = time
+        }
         // 开始倒计时
-        // 可以传递开始时间参数，用于计算倒计时时间差，不传默认从系统当前时间开始计算时间差
+        // 可以传递开始时间参数，用于计算倒计时时间差，不传，默认从系统当前时间开始计算时间差
         // countdownTimer.start(with: "2018-12-17 22:49:00", end: "2018-12-19 22:49:00")
         countdownTimer.start(with: nil, end: "2019-12-19 22:49:00")
     }
     
-    
+    // 销毁时应停止并销毁倒计时，节约线程开销
     deinit {
-        /// 可写可不写
         countdownTimer.stop()
     }
-
-
 }
 
