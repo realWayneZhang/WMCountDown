@@ -1,5 +1,5 @@
 # WMCountDown
-一百行代码搞定商城活动倒计时，采用Swift4.2语法，倒计时格式为天，时，分，秒。
+一百行代码封装商城活动倒计时，用Swift4.2，倒计时格式为天，时，分，秒。
 
 ![展示](https://github.com/WinsonCheung/WMCountDown/blob/master/WMCounDown.gif)
 
@@ -8,7 +8,7 @@
 
 ## 用法：
 将WMCountDown.swift文件拖拽到项目中。
-代码如下：
+使用方法如下：
 ```Swift
   /// 懒加载 倒计时
     lazy var countdownTimer: WMCountDown = {
